@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Comfortaa:wght@300;400;700&family=Jost:ital,wght@0,300;0,500;1,300;1,500&family=Poppins:wght@300;400;600&family=Ubuntu:wght@300;400;700&display=swap');
+
+* {
+    /* font-family: 'Abel', sans-serif;
+    font-family: 'Comfortaa', cursive;
+    font-family: 'Jost', sans-serif;
+    font-family: 'Poppins', sans-serif; */
+    font-family: 'Ubuntu', sans-serif;
+}
+
+main {
+    background-color: #E5E5E9;
+}
+
+.navbar {
+    /* background-color: #1C1C1C; */
+}
+
+.nav-link {
+    /* color: #1A87B2 !important; */
+}
+
+.nav-link:hover {
+
+    font-weight: bold;
+    background-color: #0B2066;
+    color: white !important;
+    border-radius: 15px;
+
+}
+
+footer {
+    background-color: #7b6c80;
+    color: white;
+}
