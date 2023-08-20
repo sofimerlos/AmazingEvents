@@ -6,30 +6,99 @@
     font-family: 'Jost', sans-serif;
     font-family: 'Poppins', sans-serif; */
     font-family: 'Ubuntu', sans-serif;
+    padding: 0;
+    margin: 0;
+    /* outline: 2px solid black; */
 }
 
-main {
-    background-color: #E5E5E9;
+.container {
+    background-color: #505097;
 }
 
-.navbar {
-    /* background-color: #1C1C1C; */
+.logo {
+    width: 250px;
+}
+.navbar{
+ background-color: #ffffff;
+ /* background: linear-gradient(white,rgb(165, 165, 235)); */
 }
 
 .nav-link {
-    /* color: #1A87B2 !important; */
+    border-radius: 10px;
+}
+
+.nav-link.active {
+    color: aqua !important;
+    background-color: #515192;
+    border-radius: 10px;
 }
 
 .nav-link:hover {
-
     font-weight: bold;
     background-color: #0B2066;
     color: white !important;
-    border-radius: 15px;
+    border-radius: 10px;
+}
+
+
+
+header {
+    background-color: violet;
 
 }
 
+.imgCarousel {
+    height: 400px;
+    object-fit: cover;
+}
+
+main {
+    /* min-height: 70vh; */
+    background-color: 
+    #ebebee;
+}
+
 footer {
-    background-color: #7b6c80;
-    color: white;
+    min-height: 10vh;
+    background-color: #0C0B42;
+
+}
+
+.imgSocial {
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+footer>div>p {
+    font-size: 70%;
+}
+
+@media only screen and (min-width:0px) and (max-width:767px) {
+    .imgCarousel {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .logo {
+        width: 200px;
+    }
+
+    .navbar-collapse{
+        background-color: rgb(189, 186, 217);
+        display: absolute;
+        padding: 10px;
+        
+    }
+    .nav-link.active {
+        color: aqua !important;
+        background-color: #515192;
+        border-radius: 10px;
+        padding-left: 15px;
+    }
+
+}
+
+.card-text {
+    text-align: justify;
 }
