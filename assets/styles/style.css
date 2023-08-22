@@ -16,7 +16,6 @@ header {
 .container {
     background-color: #F3F3F3;
     font-family: 'Barlow', sans-serif;
-
 }
 
 .logo {
@@ -59,10 +58,11 @@ header {
 }
 
 h1 {
-    /* background-color: #182329; */
-    background: linear-gradient(#182329, #2d414c, #182329);
+    background-color: #182329;
+    /* background: linear-gradient(#182329, #2d414c, #182329); */
     letter-spacing: 5px;
     font-family: 'Poppins', sans-serif;
+
 }
 
 .form-check-input,
@@ -101,30 +101,23 @@ h1 {
     border-radius: 10px !important;
 }
 
-table{
-  
-}
-
 th {
     font-weight: bold;
     font-size: 20px;
     background-color: #53b4af !important;
     color: white !important;
-    text-align: center !important;
-
 }
 
 .headerTable {
     font-weight: bold;
     font-size: 20px;
-    background-color: #315150 !important;
     color: white !important;
     text-align: left;
-
 }
 
-td {
-    /* text-align: center; */
+.headerTable>th {
+    background-color: #F3F3F3 !important;
+    color: #315150 !important;
 }
 
 footer {
@@ -167,6 +160,23 @@ footer {
         border-radius: 5px;
         color: white !important;
     }
+
+    .headerTable {
+        font-size: 18px;
+        font-weight: bold;
+        color: white !important;
+        text-align: left;
+    }
+
+    .headerTable>th {
+        background-color: #315150 !important;
+    }
+
+    th {
+        font-size: 15px;
+    }
+
+    ;
 
 }
 
