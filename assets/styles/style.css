@@ -88,9 +88,12 @@ h1 {
     border-top-color: #53b4af !important;
 }
 
+
 .card-text {
     text-align: justify;
+    height: 85px;
 }
+
 
 .btn-primary {
     background-color: #F36A71 !important;
