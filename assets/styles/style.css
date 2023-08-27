@@ -9,10 +9,6 @@
     /* outline: 2px solid black; */
 }
 
-header {
-    background-color: violet;
-}
-
 .container {
     background-color: #F3F3F3;
     font-family: 'Barlow', sans-serif;
@@ -26,7 +22,6 @@ header {
     /* background-color: #182329; */
     background-color: white;
     font-family: 'Poppins', sans-serif;
-
     /* background: linear-gradient(white,rgb(231, 217, 227)); */
 }
 
@@ -70,7 +65,6 @@ h1 {
     border: 1px solid #182329 !important;
 }
 
-
 .btnSearch {
     background-color: #182329 !important;
     border: 2px solid #182329 !important;
@@ -92,7 +86,10 @@ h1 {
     border-top-style: dotted !important;
     border-top: 7px solid !important;
     border-top-color: #53b4af !important;
+}
 
+.card-text {
+    text-align: justify;
 }
 
 .btn-primary {
@@ -101,6 +98,7 @@ h1 {
     border-radius: 10px !important;
 }
 
+/* TABLAS */
 th {
     font-weight: bold;
     font-size: 20px;
@@ -120,6 +118,7 @@ th {
     color: #315150 !important;
 }
 
+/* FOOTER */
 footer {
     min-height: 10vh;
     /* background-color: #182329; */
@@ -136,6 +135,7 @@ footer {
     font-size: 10px;
 }
 
+/* MEDIA QUERIES */
 @media only screen and (min-width:0px) and (max-width:767px) {
     .imgCarousel {
         height: 100%;
@@ -180,6 +180,19 @@ footer {
 
 }
 
-.card-text {
-    text-align: justify;
+
+@media only screen and (min-width:768px) and (max-width:1023px) {
+    .logo {
+        width: 220px;
+    }
+
+    .navbar {
+        font-size: 12px;
+    }
+
+    .nav-link {
+        border-radius: 5px;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+    }
 }
