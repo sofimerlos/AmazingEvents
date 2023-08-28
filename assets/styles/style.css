@@ -151,9 +151,7 @@ footer {
 
     .navbar-collapse {
         background-color: #F3F3F3;
-        display: absolute;
         padding: 10px;
-
     }
 
     .nav-link.active {
@@ -178,9 +176,6 @@ footer {
     th {
         font-size: 15px;
     }
-
-    ;
-
 }
 
 
