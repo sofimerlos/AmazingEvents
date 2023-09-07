@@ -101,6 +101,23 @@ h1 {
     border-radius: 10px !important;
 }
 
+.btn-primary:hover {
+    background-color: #00759b !important;
+    border: 3px solid #00759b !important;
+    border-radius: 10px !important;
+    box-shadow: 4px 4px 10px 0 #969696;
+
+}
+
+.sinResultados {
+    height: 100px;
+    color: rgb(56, 54, 54);
+}
+
+.imgSinResultados {
+    height: 50px;
+}
+
 /* TABLAS */
 th {
     font-weight: bold;
@@ -175,6 +192,17 @@ footer {
 
     th {
         font-size: 15px;
+    }
+
+    .sinResultados {
+        height: 150px;
+        color: rgb(56, 54, 54);
+        font-size: 20px;
+        text-align: justify;
+    }
+
+    .imgSinResultados {
+        height: 25px;
     }
 }
 
