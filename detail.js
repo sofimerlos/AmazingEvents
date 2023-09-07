@@ -3,8 +3,6 @@ let id = parametro.get("id")
 const cardContainer = document.getElementById("cardsContainer")
 
 traerDatos();
-
-
 let evento = buscarEvento(id)
 crearTarjeta(evento, cardContainer);
 
