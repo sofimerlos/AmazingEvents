@@ -2,36 +2,36 @@ const cardsUpcom = document.getElementById("cardsUpcom")
 const categoriaContenedor = document.getElementById("categorias")
 const buscadorContenedor = document.getElementById("buscador")
 
+let url = "https://mindhub-xj03.onrender.com/api/amazing"
+let datos = null
+let fecha = null
 
-////////////////////TARJETAS////////////////////
-traerDatos();
-crearUpcomingTarjetas(datos, fecha, cardsUpcom);
+traerDatosUrl(url)
 
-////////////////////CHECKBOX////////////////////
-let categorias = traerCategorias(datos)
-crearChecks(categorias, categoriaContenedor)
-
-////////////////////EVENTOS////////////////////
 categoriaContenedor.addEventListener("change", filtrarTodo)
 buscadorContenedor.addEventListener("input", filtrarTodo)
 
-
-
-//****************FUNCIONES****************//
-
-////////////////////DATOS////////////////////
-function traerDatos() {
-    datos = data.events;
-    fecha = data.currentDate;
+/******************* FUNCIONES ********************/
+function traerDatosUrl(url) {
+    fetch(url)
+        .then(response => response.json())
+        .then(dataApi => {
+            fecha = dataApi.currentDate
+            datos = dataApi.events.filter(element => element.date > fecha)
+            console.log(datos)
+            crearChecks(datos)
+            crearTarjetas(datos, cardsUpcom);
+        })
+        .catch(error => console.log(error))
 }
 
 ////////////////////TARJETAS////////////////////
-function crearUpcomingTarjetas(datosEventos, fecha, contenedor) {
+function crearTarjetas(datosEventos, contenedor) {
     if (datosEventos.length == 0) {
         contenedor.innerHTML = `<div class="sinResultados px-md-4 align-content-center">
         <div class="row">
             <div class="col-12 px-0">
-                <p class="fw-bold fs-3">Lo sentimos, no hemos podido encontrar ningún resultado...<img class="imgSinResultados px-lg-3" src="../images/no_results.png" alt="no results"> </p>
+                <p class="fw-bold fs-3">Lo sentimos, no hemos podido encontrar ningún resultado...<img class="imgSinResultados px-lg-3" src="..//images/no_results.png" alt="no results"> </p>
             </div>
         </div>
         <div class="row fs-5">
@@ -42,13 +42,10 @@ function crearUpcomingTarjetas(datosEventos, fecha, contenedor) {
     }
     let tarjetas = ""
     datosEventos.forEach(element => {
-        if (element.date > fecha) {
-            tarjetas += contenidoTarjetas(element)
-        }
+        tarjetas += contenidoTarjetas(element)
     });
     contenedor.innerHTML = tarjetas
 }
-
 function contenidoTarjetas(elemento) {
     return `<div class="card cardStyle" style="width: 18rem">
     <img src="${elemento.image}" class="card-img-top px-3 pt-4" height=170px alt="${elemento.name}">
@@ -77,8 +74,14 @@ function contenidoTarjetas(elemento) {
 </div>`
 }
 
-
 ////////////////////CHECKBOX////////////////////
+
+function crearChecks(arreglo) {
+    let html = ""
+    let categorias = [... new Set(arreglo.map(elemento => elemento.category))]
+    categorias.forEach(categoria => html += contenidoChecks(categoria))
+    categoriaContenedor.innerHTML = html
+}
 function contenidoChecks(elemento) {
     return `<div class="form-check col-12 col-md-3 col-lg-3 py-md-1">
             <input class="form-check-input" type="checkbox" value="${elemento}" id="${elemento}">
@@ -88,24 +91,11 @@ function contenidoChecks(elemento) {
         </div>`
 }
 
-function crearChecks(arreglo, contenedor) {
-    let html = ""
-    arreglo.forEach(element => {
-        html += contenidoChecks(element)
-    });
-    contenedor.innerHTML = html
-}
-
-function traerCategorias(arreglo) {
-    return arreglo.map(elemento => elemento.category).filter((categoria, indice, categorias) => categorias.indexOf(categoria) === indice)
-}
-
 
 ////////////////////FILTROS////////////////////
 function filtrarPorTexto(arreglo, texto) {
     return arregloFiltrado = arreglo.filter(elemento => elemento.name.toLowerCase().includes(texto.trim().toLowerCase()))
 }
-
 function filtrarPorCategoria(arreglo) {
     let checkBoxs = Array.from(document.getElementsByClassName("form-check-input"))
     let checkSelect = checkBoxs.filter(check => check.checked)
@@ -116,9 +106,8 @@ function filtrarPorCategoria(arreglo) {
     let arregloFiltrado = arreglo.filter(element => valoresCheck.includes(element.category))
     return arregloFiltrado
 }
-
 function filtrarTodo() {
     let filtroCategorias = filtrarPorCategoria(datos)
     let filtroBuscar = filtrarPorTexto(filtroCategorias, buscadorContenedor.value)
-    crearUpcomingTarjetas(filtroBuscar, fecha, cardsUpcom)
+    crearTarjetas(filtroBuscar, cardsUpcom)
 }

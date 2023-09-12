@@ -1,50 +1,32 @@
-let datos = [];
 const cardContainer = document.getElementById("cardsContainer")
 const categoriaContenedor = document.getElementById("categorias")
 const buscadorContenedor = document.getElementById("buscador")
 
+let url = "https://mindhub-xj03.onrender.com/api/amazing"
+let datos = null
 
-////////////////////TARJETAS////////////////////
-traerDatos();
-crearTarjetas(datos, cardContainer);
+traerDatosUrl(url)
 
-////////////////////CHECKBOX////////////////////
-let categorias = traerCategorias(datos)
-crearChecks(categorias, categoriaContenedor)
-
-////////////////////EVENTOS////////////////////
 categoriaContenedor.addEventListener("change", filtrarTodo)
 buscadorContenedor.addEventListener("input", filtrarTodo)
 
-/*
-categoriaContenedor.addEventListener("change", () =>{
-    let filtroCategorias= filtrarPorCategoria(datos)
-    crearTarjetas(filtroCategorias, cardContainer)
-})
 
-buscadorContenedor.addEventListener("input", ()=>{
-    let filtroBuscar= filtrarPorTexto(datos,buscadorContenedor.value)
-    crearTarjetas(filtroBuscar, cardContainer)
-})*/
+/******************* FUNCIONES ********************/
+function traerDatosUrl(url) {
+    fetch(url)
+        .then(response => response.json())
+        .then(dataApi => {
+            console.log(dataApi)
 
+            datos = dataApi.events
+            crearChecks(datos)
+            crearTarjetas(datos, cardContainer);
 
-//****************FUNCIONES****************//
-
-////////////////////DATOS////////////////////
-function traerDatos() {
-    datos = data.events;
+        })
+        .catch(error => console.log(error))
 }
 
 ////////////////////TARJETAS////////////////////
-// function crearTarjetas(datosEventos, contenedor) {
-//     let tarjetas = ""
-//     for (elementoEvento of Object.values(datosEventos)) {
-//         tarjetas += contenidoTarjetas(elementoEvento)
-//     }
-//     contenedor.innerHTML = tarjetas
-// }
-
-
 function crearTarjetas(datosEventos, contenedor) {
     if (datosEventos.length == 0) {
         contenedor.innerHTML = `<div class="sinResultados px-md-4 align-content-center">
@@ -66,7 +48,6 @@ function crearTarjetas(datosEventos, contenedor) {
     });
     contenedor.innerHTML = tarjetas
 }
-
 function contenidoTarjetas(elemento) {
     return `<div class="card cardStyle" style="width: 18rem">
     <img src="${elemento.image}" class="card-img-top px-3 pt-4" height=170px alt="${elemento.name}">
@@ -95,9 +76,14 @@ function contenidoTarjetas(elemento) {
 </div>`
 }
 
-
 ////////////////////CHECKBOX////////////////////
 
+function crearChecks(arreglo) {
+    let html = ""
+    let categorias = [... new Set(arreglo.map(elemento => elemento.category))]
+    categorias.forEach(categoria => html += contenidoChecks(categoria))
+    categoriaContenedor.innerHTML = html
+}
 function contenidoChecks(elemento) {
     return `<div class="form-check col-12 col-md-3 col-lg-3 py-md-1">
             <input class="form-check-input" type="checkbox" value="${elemento}" id="${elemento}">
@@ -107,26 +93,11 @@ function contenidoChecks(elemento) {
         </div>`
 }
 
-function crearChecks(arreglo, contenedor) {
-    let html = ""
-    arreglo.forEach(element => {
-        html += contenidoChecks(element)
-    });
-    contenedor.innerHTML = html
-}
-
-function traerCategorias(arreglo) {
-    return arreglo.map(elemento => elemento.category).filter((categoria, indice, categorias) => categorias.indexOf(categoria) === indice)
-    //tengo un arreglo con todas las categorias, pero puede que esten repetidas
-    //entonces con filter saco los repetidos
-}
-
 
 ////////////////////FILTROS////////////////////
 function filtrarPorTexto(arreglo, texto) {
     return arregloFiltrado = arreglo.filter(elemento => elemento.name.toLowerCase().includes(texto.trim().toLowerCase()))
 }
-
 function filtrarPorCategoria(arreglo) {
     let checkBoxs = Array.from(document.getElementsByClassName("form-check-input"))
     let checkSelect = checkBoxs.filter(check => check.checked)
@@ -137,7 +108,6 @@ function filtrarPorCategoria(arreglo) {
     let arregloFiltrado = arreglo.filter(element => valoresCheck.includes(element.category))
     return arregloFiltrado
 }
-
 function filtrarTodo() {
     let filtroCategorias = filtrarPorCategoria(datos)
     let filtroBuscar = filtrarPorTexto(filtroCategorias, buscadorContenedor.value)
@@ -147,33 +117,3 @@ function filtrarTodo() {
 
 
 
-
-
-//Para mi: PARTE DE LA RESOLUCION SIN FUNCIONES- VER BRANCH SPRINT2- COMMIT DINAMIC CARDS
-// for (elemento of Object.values(data.events)) {
-//     tarjetas += `<div class="card cardStyle" style="width: 18rem">
-//     <img src="${elemento.image}" class="card-img-top px-3 pt-4" height=170px alt="card2">
-//     <div class="card-body">
-//         <h5 class="card-title text-center fw-bold">
-//             ${elemento.name}
-//         </h5>
-//         <p class="card-text"> ${elemento.description}</p>
-//         <div class="row m-0 pb-4 align-items-center">
-//             <div class="col-12 p-0 mb-1">
-//                 <p class="m-0 fw-bold fs-6">Categorie: <span class="fw-normal">${elemento.category}</span></p>
-//             </div>
-//             <div class="col-12 p-0 mb-1">
-//                 <p class="m-0 fw-bold fs-6">Place: <span class="fw-normal">${elemento.place}</span></p>
-//             </div>
-//             <div class="col-12 p-0 mb-1">
-//                 <p class="m-0 fw-bold fs-6">Price: <span>$ ${elemento.price}</span></p>
-//             </div>
-//         </div>
-//         <div class="row m-0 align-items-center">
-//             <div class="col-12 p-0 text-end">
-//                 <a href="./assets/pages/details.html" class="btn btn-primary">Details</a>
-//             </div>
-//         </div>
-//     </div>
-// </div>`
-// }

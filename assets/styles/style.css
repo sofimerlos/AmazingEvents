@@ -121,22 +121,67 @@ h1 {
 /* TABLAS */
 th {
     font-weight: bold;
-    font-size: 20px;
-    background-color: #53b4af !important;
+    font-size: 22px;
     color: white !important;
+    height: 60px;
+    white-space: nowrap;
 }
 
-.headerTable {
+.headerTable1>th {
+    background: linear-gradient(#397b78, #53B4AF);
+    text-align: center;
+
+}
+
+.headerTable2>th {
+    background: linear-gradient(#3b93b9, #4BBAEB);
+    text-align: center;
+
+}
+
+.headerTable3>th {
+    background: linear-gradient(#5a71a8, #87AAFC);
+    text-align: center;
+
+}
+
+td {
+    white-space: nowrap;
+    text-align: center;
+    font-size: 20px;
+}
+
+.tableTitle {
+    color: #182329;
+    font-size: 30px;
     font-weight: bold;
-    font-size: 20px;
-    color: white !important;
-    text-align: left;
+    margin-bottom: 20px;
 }
 
-.headerTable>th {
-    background-color: #F3F3F3 !important;
-    color: #315150 !important;
+.filaBotones {
+    height: 80px;
+    padding: 20px !important;
 }
+
+.btn-tabla {
+    background-color: white !important;
+    border: 3px solid #397b78 !important;
+    border-radius: 20px !important;
+    color: #397b78 !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+
+}
+
+.btn-tabla:hover {
+    background-color: #00759b !important;
+    border: 3px solid #00759b !important;
+    border-radius: 20px !important;
+    box-shadow: 4px 4px 10px 0 #969696;
+    color: white !important;
+    font-size: 20px;
+}
+
 
 /* FOOTER */
 footer {
@@ -186,13 +231,31 @@ footer {
         text-align: left;
     }
 
-    .headerTable>th {
-        background-color: #315150 !important;
+    th {
+        font-size: 17px;
     }
 
-    th {
+    td {
+        white-space: nowrap;
+        text-align: center;
         font-size: 15px;
     }
+
+    .tableTitle {
+        color: #182329;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .btn-tabla {
+        font-size: 17px !important;
+    }
+    
+    .btn-tabla:hover {
+        font-size: 17px;
+    }
+
 
     .sinResultados {
         height: 150px;
@@ -204,6 +267,12 @@ footer {
     .imgSinResultados {
         height: 25px;
     }
+
+    .card-text {
+        text-align: justify;
+        height: auto;
+    }
+    
 }
 
 

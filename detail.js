@@ -2,18 +2,27 @@ let parametro = new URLSearchParams(window.location.search)
 let id = parametro.get("id")
 const cardContainer = document.getElementById("cardsContainer")
 
-traerDatos();
-let evento = buscarEvento(id)
-crearTarjeta(evento, cardContainer);
+let url = "https://mindhub-xj03.onrender.com/api/amazing"
+let evento = null
+
+traerDatosUrl(url);
 
 
-function traerDatos() {
-    datos = data.events;
+function traerDatosUrl(url) {
+    fetch(url)
+        .then(response => response.json())
+        .then(dataApi => {
+            datos = dataApi.events
+            //evento = buscarEvento(id)
+            evento = datos.find(elemento => elemento._id == id)
+            crearTarjeta(evento, cardContainer);
+        })
+        .catch(error => console.log(error))
 }
 
-function buscarEvento(id) {
-    return datos.find(evento => evento._id == id)
-}
+// function buscarEvento(id) {
+//     return datos.find(evento => evento._id == id)
+// }
 
 function contenidoTarjetas(elemento) {
     return `<div class="card py-4 px-4 cardStyle" style="max-width: 1000px;">
