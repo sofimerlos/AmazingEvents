@@ -80,15 +80,15 @@ function tablaEventStatistc() {
 
         html += `<tr>
                     <td class="filaBotones"> 
-                        <a href="./details.html?id=${mayorAsistenciaEvento[i]._id}" class="btn btn-tabla">${mayorAsistenciaEvento[i].name}</a>
+                        <a href="./details.html?id=${mayorAsistenciaEvento[i]._id}" class="btn btn-tabla"> <span style="font-weight: normal"> ${mayorAsistenciaEvento[i].name}: </span>  ${(((mayorAsistenciaEvento[i].assistance) * 100) / mayorAsistenciaEvento[i].capacity).toFixed(2)} %</a>
                     </td>
 
                     <td class="filaBotones"> 
-                        <a href="./details.html?id=${menorAsistenciaEvento[i]._id}" class="btn btn-tabla">${menorAsistenciaEvento[i].name}</a>
+                        <a href="./details.html?id=${menorAsistenciaEvento[i]._id}" class="btn btn-tabla"><span style="font-weight: normal"> ${menorAsistenciaEvento[i].name}: </span>  ${(((menorAsistenciaEvento[i].assistance) * 100) / menorAsistenciaEvento[i].capacity).toFixed(2)}%</a>
                     </td>
 
                     <td class="filaBotones"> 
-                        <a href="./details.html?id=${mayorCapacidadEvento[i]._id}" class="btn btn-tabla">${mayorCapacidadEvento[i].name}</a>
+                        <a href="./details.html?id=${mayorCapacidadEvento[i]._id}" class="btn btn-tabla"> <span style="font-weight: normal"> ${mayorCapacidadEvento[i].name}: </span>  ${mayorCapacidadEvento[i].capacity.toLocaleString()}</a>
                     </td>
                 </tr>`
 
