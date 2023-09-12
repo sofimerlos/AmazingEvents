@@ -10,10 +10,15 @@ let fecha
 let datosTabla2 = []
 let datosTabla3 = []
 
+let mayorCapacidadEvento = []
+let mayorAsistenciaEvento = []
+let menorAsistenciaEvento = []
+
 traerDatosUrl(url)
 traerDatosUrl2(url)
 traerDatosUrl3(url)
 
+/******************* FUNCIONES ********************/
 function traerDatosUrl(url) {
     fetch(url)
         .then(response => response.json())
@@ -54,9 +59,6 @@ function traerDatosUrl3(url) {
         .catch(error => console.log(error))
 }
 
-let mayorCapacidadEvento = []
-let mayorAsistenciaEvento = []
-let menorAsistenciaEvento = []
 
 
 function extraerValoresTabla1(datos) {
@@ -107,6 +109,8 @@ function tablaEventStatistc() {
 
 }
 
+
+
 function extraerValoresTabla2(datos) {
     let categorias = [...new Set(datos.map(elemento => elemento.category))]
     console.log(categorias);
@@ -156,6 +160,7 @@ function tablaPastEvents() {
 }
 
 
+
 function extraerValoresTabla3(datos) {
     let categorias = [...new Set(datos.map(elemento => elemento.category))]
     console.log(categorias);
@@ -188,7 +193,6 @@ function extraerValoresTabla3(datos) {
         datosTabla3.push(fila)
     })
 }
-
 
 function tablaUpcomingEvents() {
 

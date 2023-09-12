@@ -17,7 +17,7 @@ function traerDatosUrl(url) {
         .then(response => response.json())
         .then(dataApi => {
             fecha = dataApi.currentDate
-            datos = dataApi.events.filter(element=> element.date < fecha)
+            datos = dataApi.events.filter(element => element.date < fecha)
             console.log(datos)
             crearChecks(datos)
             crearTarjetas(datos, cardsPast);
